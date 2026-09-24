@@ -9,7 +9,7 @@ const inlineRegexParser = (line) => {
 };
 
 const rendMD = (mdString) => {
-    const lineArr = mdString.split(/\r\n?\n/);
+    const lineArr = mdString.split(/\r?\n/);
     const renderedArr = [];
 
     let listChecker = false;
@@ -36,4 +36,10 @@ const rendMD = (mdString) => {
 
         else { renderedArr.push(`<p>${ inlineRegexParser(lineNoSpaces) }</p>`) }
     }
+
+    if (listChecker) { renderedArr.push('</ul>'); }
+
+    return renderedArr.join('');
 }
+
+export default rendMD;
