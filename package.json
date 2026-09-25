@@ -1,13 +1,11 @@
 {
-  "name": "@caganelden/markdjs",
+  "name": "@cagan-elden/markdjs",
   "version": "1.0.1",
-  "description": "**MarkdJS** is a lightweight & easy-to-use `markdown` to `html` rendering `javascript` library with XSS protection.",
-  "main": "main.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cagan-elden/markdjs.git"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
