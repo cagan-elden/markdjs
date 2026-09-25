@@ -1,0 +1,12 @@
+{
+  "name": "@caganelden/markdjs",
+  "version": "1.0.0",
+  "description": "**MarkdJS** is a lightweight & easy-to-use `markdown` to `html` rendering `javascript` library with XSS protection.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
