@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "**MarkdJS** is a lightweight & easy-to-use `markdown` to `html` rendering `javascript` library with XSS protection.",
   "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/your-repo-name.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
