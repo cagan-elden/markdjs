@@ -1,6 +1,6 @@
 {
   "name": "@caganelden/markdjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "**MarkdJS** is a lightweight & easy-to-use `markdown` to `html` rendering `javascript` library with XSS protection.",
   "main": "main.js",
   "repository": {
