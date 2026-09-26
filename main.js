@@ -1,8 +1,26 @@
-import escapeHtml from 'escape.js';
-import inlineRegexParser from 'regex.js';
+// This function uses regex to render html elements by markdown
+const inlineRegexParser = (line) => {
+    return (line
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*([^\*]+)\*/g, '<em>$1</em>')
+        .replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2">$1</a>')
+    );
+};
 
+// I've written this function for XSS protection
+const escapeHTML = (str) => {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+};
+
+// this is the function which does the job
 const rendMD = (mdString) => {
-    const lineArr = escapeHtml(mdString).split(/\r?\n/);
+    const lineArr = escapeHTML(mdString).split(/\r?\n/);
     const renderedArr = [];
 
     let listChecker = false;
