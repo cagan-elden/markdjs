@@ -2,7 +2,13 @@
 **MarkdJS** is a lightweight & easy-to-use `markdown` to `html` rendering `javascript` library with XSS protection.
 
 ## Set Up
-Setting up the library is pretty simple, just drag the files in the repository in the same directory in your project, import `main.js` in your `html` document & execute `rendMD();`
+Setting up the library is pretty simple, just run
+
+```bash
+npm i @caganelden/markdjs
+```
+
+You can parse any markdown into html as it is shown bellow:
 
 ```html
 <script type="module">
