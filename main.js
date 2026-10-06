@@ -9,7 +9,7 @@ this package is owned by : https://github.com/cagan-elden
 
 */
 
-// this function sanitizes url's, I only allowed https & mailto for now
+// this function sanitizes url's, I only allowed http, https & mailto for now
 const sanitizeUrl = (url) => {
     const trimmedUrl = url.trim();
 
@@ -71,16 +71,31 @@ const rendMD = (mdString) => {
     const renderedArr = [];
 
     let listChecker = false;
+    let inOrderedList = false;
 
     for (let i=0; i < lineArr.length; i++) {
         const line = lineArr[i];
         const lineNoSpaces = line.trim();
 
         // check for list tags
-        if (lineNoSpaces.startsWith('- ')) {
+        let isUnorderedList = (lineNoSpaces.startsWith('- ') || lineNoSpaces.startsWith('+ ') || lineNoSpaces.startsWith('* '));
+        let isOrderedList   = /^\d+\.\s/.test(lineNoSpaces);
+
+        // I'm gonna make these much more readable & easier to add new tags in newer versions
+        if (isOrderedList) {
+
+            if (!inOrderedList) { renderedArr.push('<ol>'); inOrderedList=true; }
+            renderedArr.push(`<li>${inlineRegexParser(lineNoSpaces.slice(lineNoSpaces.indexOf('.')+1))}</li>`);
+
+        } else if (isUnorderedList) {
+
+            if (inOrderedList) { renderedArr.push('</ol>'); }
             if (!listChecker) { renderedArr.push('<ul>'); listChecker = true; }
             renderedArr.push(`<li>${ inlineRegexParser(lineNoSpaces.slice(2)) }</li>`);
+
         } else {
+
+            if (inOrderedList) { renderedArr.push('</ol>'); }
             if (listChecker) { renderedArr.push('</ul>'); listChecker = false; }
 
             // tag-checking made easier to add new tags much easier
@@ -88,6 +103,7 @@ const rendMD = (mdString) => {
 
             if (checkForTags) { renderedArr.push(checkForTags.parse(lineNoSpaces)); }
             else { renderedArr.push(`<p>${ inlineRegexParser(lineNoSpaces) }</p>`) }
+
         }
     }
 
