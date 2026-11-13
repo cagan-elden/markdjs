@@ -77,7 +77,7 @@ export const clearTags = (mdString) => {
         .replace(/\*([^\*]+)\*/g, '<em>$1</em>')
         .replace(/\[([^\]]+)\]\(([^\)]+)\)/g, `<strong>$1</strong>`)
         .replace(/^---$/gm, '')
-        );
+    );
 }
 
 // this is the function which does the job
