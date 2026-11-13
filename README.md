@@ -12,12 +12,15 @@ You can parse any markdown into html as it is shown bellow:
 
 ```html
 <script type="module">
-  import rendMD from 'main.js';
+  import rendMD, { clearTags } from 'main.js';
 
   let stringVar = "lorem ipsum dolor sit amet...";
 
   let renderedText = rendMD(stringVar);
+  let clearedText  = clearTags(stringVar);
 </script>
 ```
 
 `rendMD();` renders your `markdown` to `html` meaning you can make it reactive by just declaring it as a parameter & access your rendered text by just calling the variable holding `rendMD();`
+
+`clearTags();` clears `markdown` tags meaning it can be used for creating sleek widget designs.
