@@ -65,6 +65,21 @@ const defaultTags = [
     }
 ];
 
+// this function clears the ugly markdown tags for widgets by outputting <strong> & <em>
+// I recommend using this for displaying widgets
+export const clearTags = (mdString) => {
+    const withoutHtmlString = escapeHTML(mdString);
+
+    return (withoutHtmlString
+        .replace(/^#+\s?/gm, '')
+        .replace(/`([^`]+)`/g, '<strong>$1</strong>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*([^\*]+)\*/g, '<em>$1</em>')
+        .replace(/\[([^\]]+)\]\(([^\)]+)\)/g, `<strong>$1</strong>`)
+        .replace(/^---$/gm, '')
+        );
+}
+
 // this is the function which does the job
 const rendMD = (mdString) => {
     const lineArr = escapeHTML(mdString).split(/\r?\n/);
