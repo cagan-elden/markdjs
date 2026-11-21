@@ -101,7 +101,7 @@ const rendMD = (mdString) => {
         let isCodeSnippet = lineNoSpaces.startsWith('```');
 
         if (isCodeSnippet && !inCodeSnippet) { renderedArr.push(`<pre><code class='${ lineNoSpaces.slice(3) }'>`); inCodeSnippet=true; continue; }
-        if (isCodeSnippet && inCodeSnippet) { renderedArr.push('</code></pre>'); continue; }
+        if (isCodeSnippet && inCodeSnippet) { renderedArr.push('</code></pre>'); inCodeSnippet=false; continue; }
         if (inCodeSnippet) { renderedArr.push(lineNoSpaces + '\n'); continue; }
 
         // I'm gonna make these much more readable & easier to add new tags in newer versions
